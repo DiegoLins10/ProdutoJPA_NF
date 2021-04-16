@@ -1,5 +1,7 @@
 package com.services;
 
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import javax.persistence.EntityManager;
@@ -8,6 +10,7 @@ import javax.persistence.Persistence;
 
 import com.entidades.Cliente;
 import com.entidades.Item;
+import com.entidades.Nota;
 import com.entidades.Produto;
 
 public class Teste {
@@ -40,6 +43,7 @@ public class Teste {
 		for (Produto produto: produtos) 
 			entitymanager.persist(produto);
 		
+		// Lista de itens 1
 		ArrayList<Item> itens = new ArrayList<Item>();
 		itens.add(new Item(1, produtos.get(0), 2));
 		itens.add(new Item(2, produtos.get(1), 1));
@@ -51,7 +55,50 @@ public class Teste {
 		itens.add(new Item(8, produtos.get(7), 3));
 		
 		for (Item item: itens) 
+			entitymanager.persist(item);	
+
+		// Lista de itens 2
+		ArrayList<Item> itens2 = new ArrayList<Item>();
+		itens2.add(new Item(9, produtos.get(0), 1));
+		itens2.add(new Item(10, produtos.get(1), 2));
+		itens2.add(new Item(11, produtos.get(2), 2));
+		itens2.add(new Item(12, produtos.get(6), 3));
+		itens2.add(new Item(13, produtos.get(7), 1));
+		
+		for (Item item: itens2) 
 			entitymanager.persist(item);
+
+		// Lista de itens 3
+		ArrayList<Item> itens3 = new ArrayList<Item>();
+		itens3.add(new Item(14, produtos.get(3), 4));
+		itens3.add(new Item(15, produtos.get(4), 2));
+		itens3.add(new Item(16, produtos.get(5), 3));
+		itens3.add(new Item(17, produtos.get(6), 5));
+		itens3.add(new Item(18, produtos.get(7), 2));
+		
+		for (Item item: itens3) 
+			entitymanager.persist(item);	
+		
+		// Lista de itens 4
+		ArrayList<Item> itens4 = new ArrayList<Item>();
+		itens4.add(new Item(19, produtos.get(0), 2));
+		itens4.add(new Item(20, produtos.get(1), 3));
+		itens4.add(new Item(21, produtos.get(3), 4));
+		itens4.add(new Item(22, produtos.get(6), 5));
+		itens4.add(new Item(23, produtos.get(7), 6));
+		
+		for (Item item: itens4) 
+			entitymanager.persist(item);		
+			
+		// Lista de NFs
+		ArrayList<Nota> notas = new ArrayList<Nota>();
+		notas.add(new Nota(1, Date.valueOf(LocalDate.of(2021, 4, 16)), itens, clientes.get(0)));
+		notas.add(new Nota(2, Date.valueOf(LocalDate.of(2021, 4, 15)), itens2, clientes.get(1)));
+		notas.add(new Nota(3, Date.valueOf(LocalDate.of(2021, 4, 10)), itens3, clientes.get(2)));
+		notas.add(new Nota(4, Date.valueOf(LocalDate.of(2021, 4, 12)), itens4, clientes.get(3)));
+
+		for (Nota nota: notas) 
+			entitymanager.persist(nota);		
 		
 		entitymanager.getTransaction().commit();
 		entitymanager.close();
