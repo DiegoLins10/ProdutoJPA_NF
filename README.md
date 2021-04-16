@@ -7,4 +7,4 @@
 
 ### Especificações
  
-![](https://github.com/DiegoLins10/RegistroDePessoasBD/blob/master/pessoa%20classes.png)
+![](https://github.com/DiegoLins10/ProdutoJPA_NF/blob/master/especifica%C3%A7%C3%B5es.png)
